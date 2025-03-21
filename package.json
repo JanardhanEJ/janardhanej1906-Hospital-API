@@ -1,0 +1,28 @@
+{
+  "name": "doctorapi",
+  "version": "1.0.0",
+  "description": "This is Hospital Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/developeramit14jan/hospital_api.git"
+  },
+  "author": "Amit Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developeramit14jan/hospital_api/issues"
+  },
+  "homepage": "https://github.com/developeramit14jan/hospital_api#readme",
+  "dependencies": {
+    "dotenv": "16.4.7",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.11",
+    "nodemon": "^2.0.15",
+    "validator": "^13.7.0"
+  }
+}
