@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 // Welcome route handler
 module.exports.home = async function (req, res) {
-    return res.send("<h1>Welcome to Hospital API.. || </h1>");
+    return res.send("<br/><h1><center>Welcome to Hospital API.. !! </center></h1><br/");
 }
 
 // Doctor Registration Function
@@ -49,6 +49,13 @@ module.exports.Login = async function token(req, res) {
             
             console.log('Generated Token:', token); // Log the generated token for debugging
             
+            // Check if the entered password matches the password in the database
+            if (req.body.password !== checkDoctor.password) {
+                return res.status(401).json({
+                    message: "Email or Password is incorrect !!"
+                });
+            }
+
             // Send success response with token
             return res.status(200).json({
                 message: "Doctor Login Successfull !!",
