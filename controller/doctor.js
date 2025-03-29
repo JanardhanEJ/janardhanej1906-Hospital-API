@@ -11,7 +11,7 @@ module.exports.home = async function (req, res) {
         <br/>
         <h1><center>Welcome to Hospital API.. !! </center></h1>
         <br/>
-        <p><h4>   Click <a href="${isLocalhost ? 'http://localhost:3000/doc/index.html' : 'https://janardhanej1906-Hospital-API.onrender.com/doc/index1.html'}">here</a> to view the documentation ${isLocalhost ? '(LocalHost URL)' : '(Render URL)'}</h4></p>
+        <p><h3>   Click <a href="${isLocalhost ? 'http://localhost:3000/doc/index.html' : 'https://janardhanej1906-Hospital-API.onrender.com/doc/index1.html'}">here</a> to view the documentation ${isLocalhost ? '(LocalHost URL)' : '(Render URL)'}</h3></p>
     `);
 }
 
