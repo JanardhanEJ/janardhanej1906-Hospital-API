@@ -14,6 +14,9 @@ const Doctor = require('./models/doctor'); // Import the Doctor model
 // Create an instance of the Express application
 const app = express();
 
+// Serve the 'doc' folder as a static directory
+app.use('/doc', express.static('doc'));
+
 // Middleware to parse JSON requests (ensures Express can handle JSON data)
 app.use(express.json());
 

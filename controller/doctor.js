@@ -6,7 +6,13 @@ const jwt = require('jsonwebtoken');
 
 // Welcome route handler
 module.exports.home = async function (req, res) {
-    return res.send("<br/><h1><center>Welcome to Hospital API.. !! </center></h1><br/");
+    const isLocalhost = req.headers.host.includes('localhost:3000');
+    return res.send(`
+        <br/>
+        <h1><center>Welcome to Hospital API.. !! </center></h1>
+        <br/>
+        <p><h4>   Click <a href="${isLocalhost ? 'http://localhost:3000/doc/index.html' : 'https://janardhanej1906-Hospital-API.onrender.com/doc/index1.html'}">here</a> to view the documentation ${isLocalhost ? '(LocalHost URL)' : '(Render URL)'}</h4></p>
+    `);
 }
 
 // Doctor Registration Function

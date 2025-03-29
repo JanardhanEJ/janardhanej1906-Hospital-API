@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <center><h1>Hospital API Documentation</br>
+            <p>(use the below URLs in Postman for API testing)</p><h1></center>
+        </header>
+
+        <p>
+          The Hospital API is a Node.js and MongoDB-based backend system designed for doctors managing COVID-19 patients.</br>
+          Doctors can Register, Login and Create Patient Reports. Each patient can have multiple reports, categorized by 
+          status (e.g., Negative, Quarantine, Positive).</br></br>
+          <b>Features Implemented:</b></br></br>
+          <b>Doctor Registration:</b> Doctors can sign up using a name, email and password.</br>
+          <b>Doctor Login</b> : Secure authentication using JWT, allowing doctors to log in.</br>
+          <b>Patient Registration</b> : Patients can be registered using their phone number. If already registered, return existing patient details.</br>
+          <b>Create Patient Report</b> : After a checkup, doctors can create or generate reports with details such as doctor’s name, status and date.</br>
+          <b>View Patient Reports</b> : Retrieve all reports of a specific patient, sorted from oldest to latest.</br>
+          <b>Filter Reports by Status</b> : List all reports of all patients based on a specific status (e.g., Negative, Symptoms-Quarantine, etc.).</br>
+        </p>
+
+        <section>
+            <h2>📌 POST - Doctor Registration</h2>
+            <p>Now Doctor needs to register by providing there details..</p>
+
+            <h3>🛠 Request</h3>
+            <pre><code>URL: http://localhost:3000/doctor/register</code></pre>
+
+            <h3>🔹 Headers</h3>
+            <pre><code>
+            Content-Type: application/json
+            Authorization: no token
+            </code></pre>
+            
+            <h3>🔹 Body (Raw JSON)</h3>
+            <pre><code>
+              {
+                "name": "Janardhan E J",
+                "email": "janardhanejshantha@gmail.com",
+                "password": "admin123"
+              }
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>📌 GET - Doctor Login</h2>
+          <p>Every Registered Doctor can login from Email and Password.</p>
+
+          <h3>🛠 Request</h3>
+          <pre><code>URL: http://localhost:3000/doctor/login</code></pre>
+
+          <h3>🔹 Headers</h3>
+          <pre><code>
+            Content-Type: application/json
+            Authorization: no token
+          </code></pre>
+          
+          <h3>🔹 Body (Raw JSON)</h3>
+          <pre><code>
+            {
+              "email": "janardhanejshantha@gmail.com",
+              "password": "admin123"
+            }
+          </code></pre>
+          <p>Note: Here you will get jwt token; save this token; which will be used further for authorization purpose.</p>
+      </section>
+
+      <section>
+        <h2>📌 POST - Patient Registration</h2>
+        <p>Patients who visited the hospital will be register by Doctor of that hospital.</p>
+
+        <h3>🛠 Request</h3>
+        <pre><code>URL: http://localhost:3000/patients/registers</code></pre>
+
+        <h3>🔹 Headers</h3>
+        <pre><code>
+          Content-Type: application/json
+          Authorization: add token which is saved during doctor login.
+        </code></pre>
+        
+        <h3>🔹 Body (Raw JSON)</h3>
+        <p>Patient 1</p>
+        <pre><code>
+          {
+            "name": "Naveen Kumar",
+            "email": "naveenej2612@gmail.com",
+            "phone": "9945803170",
+            "address": "ittamadu"
+          }
+        </code></pre>
+
+        <p>Patient 2</p>
+        <pre><code>
+          {
+            "name": "Sujatha M",
+            "email": "sujathaemhema@gmail.com",
+            "phone": "8050702976",
+            "address": "hsr layout"
+          }
+        </code></pre>
+    </section>
+
+    <section>
+      <h2>📌 POST - Create Report of patients</h2>
+      <p>Doctor can create report of patients after check up.</p>
+
+      <h3>🛠 Request</h3>
+      <p>Note : Here we need to pass patients id in the url as params. You will get Patient id after successful patient Registration.</p>
+      <pre><code>URL: http://localhost:3000/patients/patient_id/create_report</code></pre>
+
+      <h3>🔹 Headers</h3>
+      <pre><code>
+        Content-Type: application/json
+        Authorization: add token which is saved during doctor login.
+      </code></pre>
+      
+      <h3>🔹 Body (Raw JSON)</h3>
+      <p>Patient 1</p>
+      <pre><code>
+        {
+          "createdBy": "Janardhan E J",
+          "patientId": "67deaa4a16f200bdc226a45b",
+          "status": "Positive-Admit"
+        }
+      </code></pre>
+
+      <p>Patient 2</p>
+      <pre><code>
+        {
+          "createdBy": "Janardhan E J",
+          "patientId": "67deac6b16f200bdc226a470",
+          "status": "Negative"
+        }
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>📌 GET - Get report on status</h2>
+      <p>Here we can get the data based on the status where status can be anyone of the following :
+        Negative;  Positive-Admit;  Symptoms-Quratine;  Travelled-Qurantine</p>
+
+      <h3>🛠 Request</h3>
+      <pre><code>URL: https://localhost:3000/patients/Positive-Admit</code></pre>
+
+      <h3>🔹 Headers</h3>
+      <pre><code>
+        Content-Type: application/json
+        Authorization: no token
+      </code></pre>
+      
+      <h3>🔹 Body (None)</h3>
+      <p>Patient Details will be displayed here.</p>
+
+      <h3>🛠 Request</h3>
+      <pre><code>URL: https://localhost:3000/patients/Negative</code></pre>
+
+      <h3>🔹 Headers</h3>
+      <pre><code>
+        Content-Type: application/json
+        Authorization: no token
+      </code></pre>
+      
+      <h3>🔹 Body (None)</h3>
+      <p>Patient Details will be displayed here.</p>
+    </section>
+
+    <section>
+      <h2>📌 GET - Get all the report of specific patient</h2>
+      <p>Here doctor will get the report history of patients.</p>
+
+      <h3>🛠 Request</h3>
+      <p>Note : Here we need to pass patients id in the url as params. You will get Patient id after successful patient Registration.</p>
+      <pre><code>URL: http://localhost:3000/patients/patient_id/all_report</code></pre>
+
+      <h3>🔹 Headers</h3>
+      <pre><code>
+        Content-Type: application/json
+        Authorization: add token which is saved during doctor login.
+      </code></pre>
+      
+      <h3>🔹 Body (None)</h3>
+      <p>Patient's History Details will be displayed here.</p>
+    </section>
+
+  </div>
+</body>
+</html>

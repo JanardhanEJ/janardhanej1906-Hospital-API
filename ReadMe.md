@@ -4,7 +4,7 @@ The Hospital API is a Node.js and MongoDB-based backend system designed for doct
 
 
 ## Live Demo
-Link:
+Link: https://janardhanej1906-hospital-api.onrender.com
 
 
 ## Features Implemented
@@ -64,6 +64,35 @@ Follow these steps to run the project locally:
 5. Open your web browser and visit http://localhost:3000 to access the application.
 
 
-## Screenshots: (taken locally)
-1. Open your web browser and go to http://localhost:3000/
+## Screenshots: (taken on Render URL)
+Use the URLs in Postman Application for testing: (either localhost URL/Render URL)
+1. Doctor Register:
+![alt text](image.png)
 
+2. Doctor Login:
+![alt text](image-1.png)
+Save the generated token.
+
+3. Patient Registration:
+Add the generated token here:
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+4. Create Patient Report:
+Add the generated token here:
+![alt text](image-4.png)
+
+![alt text](image-5.png)
+
+5. Get Report on Status - Postive
+![alt text](image-6.png)
+
+6. Get Report on Status - Negative
+![alt text](image-7.png)
+
+7. Get all the reports of specific patient
+Add the generated token here:
+![alt text](image-9.png)
+
+![alt text](image-8.png)
